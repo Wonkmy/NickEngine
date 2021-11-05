@@ -60,7 +60,7 @@ public class WindowManager {
             maximised=true;
         }
 
-        window=GLFW.glfwCreateWindow(width,height,title, MemoryUtil.NULL,MemoryUtil.NULL);//实际创建一个窗口逻辑
+        window=GLFW.glfwCreateWindow(width,height,title, MemoryUtil.NULL,MemoryUtil.NULL);
 
         if(window==MemoryUtil.NULL)
             throw new RuntimeException("Failed to create GLFW window");
@@ -78,7 +78,7 @@ public class WindowManager {
         });
 
         if(maximised)
-            GLFW.glfwMaximizeWindow(window);//最大化显示窗口
+            GLFW.glfwMaximizeWindow(window);
         else {
             GLFWVidMode vidMode=GLFW.glfwGetVideoMode(GLFW.glfwGetPrimaryMonitor());
             GLFW.glfwSetWindowPos(window,(vidMode.width()-width)/2,(vidMode.height()-height)/2);

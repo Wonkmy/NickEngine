@@ -1,18 +1,28 @@
 package com.wonkmy.core;
 
+import com.wonkmy.coreLogic.EngineManager;
 import com.wonkmy.coreLogic.WindowManager;
-import org.lwjgl.Version;
-
 public class Launcher {
+
+    private static WindowManager window;
+    private static NewGame myFirstGame;
+
     public static void main(String[] args) {
-//        System.out.println(Version.getVersion());
-        WindowManager window=new WindowManager("NickGameEngine",1280,720,false);
-        window.init();
-
-        while (!window.windowShouldClose()){
-            window.update();
+        window=new WindowManager("NickGameEngine",1280,720,false);
+        myFirstGame=new NewGame();
+        EngineManager engine=new EngineManager();
+        try {
+            engine.start();
+        }catch (Exception e){
+            e.printStackTrace();
         }
+    }
 
-        window.cleanup();
+    public static WindowManager getWindow() {
+        return window;
+    }
+
+    public static NewGame getMyFirstGame() {
+        return myFirstGame;
     }
 }
